@@ -1,13 +1,18 @@
 package com.example.currencyexchangeappaed_us
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.currencyexchangeappaed_us.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private var binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding?.let { bind ->
+            setContentView(bind.root)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 }
