@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
@@ -66,6 +67,12 @@ public inline fun TextView.doAfterTextChanged(
     crossinline action: (text: Editable?) -> Unit
 ): TextWatcher = addTextChangedListener(afterTextChanged = action)
 
+
+fun View.setOnFocusChangedListener(listener: (Boolean) -> Unit) {
+    this.setOnFocusChangeListener { _, hasFocus ->
+        listener.invoke(hasFocus)
+    }
+}
 
 fun Context.color(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
